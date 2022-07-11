@@ -195,16 +195,34 @@ public class Level : MonoBehaviour {
         }
     }
 
-    private void SetDifficulty(Difficulty difficulty) {
-        switch (difficulty) {
-        case Difficulty.Easy:
-            gapSize = 50f;
-            pipeSpawnTimerMax = 1.4f;
-            break;
+    private void SetDifficulty(Difficulty difficulty)
+    {
+        switch (difficulty)
+        {
+            case Difficulty.Easy:
+                gapSize = 50f;
+                pipeSpawnTimerMax = 1.4f;
+                break;
+            case Difficulty.Medium:
+                gapSize = 40f;
+                pipeSpawnTimerMax = 1.3f;
+                break;
+            case Difficulty.Hard:
+                gapSize = 33f;
+                pipeSpawnTimerMax = 1.1f;
+                break;
+            case Difficulty.Impossible:
+                gapSize = 24f;
+                pipeSpawnTimerMax = 1.0f;
+                break;
         }
     }
 
-    private Difficulty GetDifficulty() {
+    private Difficulty GetDifficulty()
+    {
+        if (pipesSpawned >= 24) return Difficulty.Impossible;
+        if (pipesSpawned >= 12) return Difficulty.Hard;
+        if (pipesSpawned >= 5) return Difficulty.Medium;
         return Difficulty.Easy;
     }
 
