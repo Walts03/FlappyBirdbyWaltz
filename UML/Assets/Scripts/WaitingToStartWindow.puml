@@ -1,0 +1,5 @@
+@startuml
+class WaitingToStartWindow {
+}
+MonoBehaviour <|-- WaitingToStartWindow
+@enduml

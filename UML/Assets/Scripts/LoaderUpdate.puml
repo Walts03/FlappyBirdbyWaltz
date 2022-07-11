@@ -1,0 +1,5 @@
+@startuml
+class LoaderUpdate {
+}
+MonoBehaviour <|-- LoaderUpdate
+@enduml

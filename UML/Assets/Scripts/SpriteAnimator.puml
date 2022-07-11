@@ -1,0 +1,12 @@
+@startuml
+class SpriteAnimator {
+    + framesPerSecond : int = 30
+    + loop : bool = true
+    + useUnscaledDeltaTime : bool
+    + Setup(frames:Sprite[], framesPerSecond:int) : void
+    + SetTimerMax(timerMax:float) : void
+    + PlayStart() : void
+}
+MonoBehaviour <|-- SpriteAnimator
+SpriteAnimator --> "onLoop" OnLoopDel
+@enduml

@@ -1,0 +1,5 @@
+@startuml
+class GameOverWindow {
+}
+MonoBehaviour <|-- GameOverWindow
+@enduml

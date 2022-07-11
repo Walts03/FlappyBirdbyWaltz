@@ -1,0 +1,112 @@
+@startuml
+class SoundManager <<static>> {
+    + {static} PlaySound(sound:Sound) : void
+    + {static} AddButtonSounds(buttonUI:Button_UI) : void
+}
+enum Sound {
+    BirdJump,
+    Score,
+    Lose,
+    ButtonOver,
+    ButtonClick,
+}
+SoundManager +-- Sound
+class LoaderUpdate {
+}
+MonoBehaviour <|-- LoaderUpdate
+class Bird {
+    + {static} GetInstance() : Bird
+    +  <<event>> OnDied : EventHandler 
+    +  <<event>> OnStartedPlaying : EventHandler 
+}
+enum State {
+    WaitingToStart,
+    Playing,
+    Dead,
+}
+MonoBehaviour <|-- Bird
+Bird +-- State
+class GameAssets {
+    + {static} GetInstance() : GameAssets
+}
+class SoundAudioClip {
+}
+MonoBehaviour <|-- GameAssets
+GameAssets --> "pipeHeadSprite" Sprite
+GameAssets --> "pfPipeHead" Transform
+GameAssets --> "pfPipeBody" Transform
+GameAssets --> "pfGround" Transform
+GameAssets --> "pfCloud_1" Transform
+GameAssets --> "pfCloud_2" Transform
+GameAssets --> "pfCloud_3" Transform
+GameAssets +-- SoundAudioClip
+SoundAudioClip --> "audioClip" AudioClip
+class MainMenuWindow {
+}
+MonoBehaviour <|-- MainMenuWindow
+class GameHandler {
+}
+MonoBehaviour <|-- GameHandler
+class Loader <<static>> {
+    + {static} Load(scene:Scene) : void
+    + {static} LoadTargetScene() : void
+}
+enum Scene {
+    GameScene,
+    Loading,
+    MainMenu,
+}
+Loader +-- Scene
+class WaitingToStartWindow {
+}
+MonoBehaviour <|-- WaitingToStartWindow
+class Score <<static>> {
+    + {static} Start() : void
+    + {static} GetHighscore() : int
+    + {static} TrySetNewHighscore(score:int) : bool
+    + {static} ResetHighscore() : void
+}
+class ScoreWindow {
+}
+MonoBehaviour <|-- ScoreWindow
+class Level {
+    + {static} GetInstance() : Level
+    + GetPipesSpawned() : int
+    + GetPipesPassedCount() : int
+}
+enum Difficulty {
+    Easy,
+    Medium,
+    Hard,
+    Impossible,
+}
+enum State {
+    WaitingToStart,
+    Playing,
+    BirdDead,
+}
+class Pipe {
+    + Pipe(pipeHeadTransform:Transform, pipeBodyTransform:Transform, isBottom:bool)
+    + Move() : void
+    + GetXPosition() : float
+    + IsBottom() : bool
+    + DestroySelf() : void
+}
+MonoBehaviour <|-- Level
+Level +-- Difficulty
+Level +-- State
+Level +-- Pipe
+class GameOverWindow {
+}
+MonoBehaviour <|-- GameOverWindow
+class SpriteAnimator {
+    + framesPerSecond : int = 30
+    + loop : bool = true
+    + useUnscaledDeltaTime : bool
+    + Setup(frames:Sprite[], framesPerSecond:int) : void
+    + SetTimerMax(timerMax:float) : void
+    + PlayStart() : void
+}
+MonoBehaviour <|-- SpriteAnimator
+SpriteAnimator --> "onLoop" OnLoopDel
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+class Score <<static>> {
+    + {static} Start() : void
+    + {static} GetHighscore() : int
+    + {static} TrySetNewHighscore(score:int) : bool
+    + {static} ResetHighscore() : void
+}
+@enduml

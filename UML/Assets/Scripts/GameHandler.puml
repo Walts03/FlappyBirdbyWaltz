@@ -1,0 +1,5 @@
+@startuml
+class GameHandler {
+}
+MonoBehaviour <|-- GameHandler
+@enduml

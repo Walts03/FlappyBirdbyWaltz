@@ -1,0 +1,14 @@
+@startuml
+class Bird {
+    + {static} GetInstance() : Bird
+    +  <<event>> OnDied : EventHandler 
+    +  <<event>> OnStartedPlaying : EventHandler 
+}
+enum State {
+    WaitingToStart,
+    Playing,
+    Dead,
+}
+MonoBehaviour <|-- Bird
+Bird +-- State
+@enduml

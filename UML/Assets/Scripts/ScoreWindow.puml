@@ -1,0 +1,5 @@
+@startuml
+class ScoreWindow {
+}
+MonoBehaviour <|-- ScoreWindow
+@enduml

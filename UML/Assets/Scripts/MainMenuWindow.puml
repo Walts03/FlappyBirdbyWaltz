@@ -1,0 +1,5 @@
+@startuml
+class MainMenuWindow {
+}
+MonoBehaviour <|-- MainMenuWindow
+@enduml

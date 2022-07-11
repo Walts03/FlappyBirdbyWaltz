@@ -1,0 +1,29 @@
+@startuml
+class Level {
+    + {static} GetInstance() : Level
+    + GetPipesSpawned() : int
+    + GetPipesPassedCount() : int
+}
+enum Difficulty {
+    Easy,
+    Medium,
+    Hard,
+    Impossible,
+}
+enum State {
+    WaitingToStart,
+    Playing,
+    BirdDead,
+}
+class Pipe {
+    + Pipe(pipeHeadTransform:Transform, pipeBodyTransform:Transform, isBottom:bool)
+    + Move() : void
+    + GetXPosition() : float
+    + IsBottom() : bool
+    + DestroySelf() : void
+}
+MonoBehaviour <|-- Level
+Level +-- Difficulty
+Level +-- State
+Level +-- Pipe
+@enduml

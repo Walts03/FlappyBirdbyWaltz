@@ -1,0 +1,12 @@
+@startuml
+class Loader <<static>> {
+    + {static} Load(scene:Scene) : void
+    + {static} LoadTargetScene() : void
+}
+enum Scene {
+    GameScene,
+    Loading,
+    MainMenu,
+}
+Loader +-- Scene
+@enduml

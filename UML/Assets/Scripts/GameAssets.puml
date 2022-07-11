@@ -1,0 +1,17 @@
+@startuml
+class GameAssets {
+    + {static} GetInstance() : GameAssets
+}
+class SoundAudioClip {
+}
+MonoBehaviour <|-- GameAssets
+GameAssets --> "pipeHeadSprite" Sprite
+GameAssets --> "pfPipeHead" Transform
+GameAssets --> "pfPipeBody" Transform
+GameAssets --> "pfGround" Transform
+GameAssets --> "pfCloud_1" Transform
+GameAssets --> "pfCloud_2" Transform
+GameAssets --> "pfCloud_3" Transform
+GameAssets +-- SoundAudioClip
+SoundAudioClip --> "audioClip" AudioClip
+@enduml

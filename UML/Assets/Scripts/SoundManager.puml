@@ -1,0 +1,14 @@
+@startuml
+class SoundManager <<static>> {
+    + {static} PlaySound(sound:Sound) : void
+    + {static} AddButtonSounds(buttonUI:Button_UI) : void
+}
+enum Sound {
+    BirdJump,
+    Score,
+    Lose,
+    ButtonOver,
+    ButtonClick,
+}
+SoundManager +-- Sound
+@enduml
